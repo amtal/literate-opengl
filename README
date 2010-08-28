@@ -1,0 +1,54 @@
+The code in this project isn't as interesting as the way it was written.
+
+    OVERVIEW:
+
+Literate programming was proposed by Knuth as an alternative to structured programming. (http://en.wikipedia.org/wiki/Literate_programming) It is fascinating, because it integrates three things:
+- the program
+- the documentation for the program
+- the description of how the program was created
+
+It is similar to modern doc-gen tools like javadoc, edoc, haddock, and others in that it involves writing documentation alongside the code.
+
+It is different in that it provides a language apathetic way to restructure the code according to the thought flow of the designer. (Some of you will think this queer - surely a good language shouldn't need that? Of course, not all languages are perfect...)
+
+    GOAL:
+
+The main question asked by beginners to programming "how do I write <thing bigger than I can understand>?" Literate programming makes it easier to write programs by moulding the language to the thought process, and provides a window into the thought process of other people who write programs.
+
+This project was an experiment in applying literate programming to a large-ish (~1k lines), time-constrained project which was developed incrementally in several stages over a long period of time. It was an attempt to see how LP dealt with the realities of programming today.
+
+    FILES:
+
+main.nw     single, monolithic literate program description
+Makefile    makefile for using main.nw to generate two things:
+            - the C source, which is then compiled
+            - the documentation, which is just main.nw with cross-references and an
+            index attached (I used LaTeX for documentation, although there's also an
+            HTML version which isn't all that bad)
+design.dot  I felt like including a diagram: the Makefile generates design.png
+
+design.pdf  the documentation produced
+design.html an alternate output format - I focused on the PDF, so this probably isn't
+            as good
+
+    CONCLUSION:
+
+Pros:
+- clean, beautiful-looking PDF documentation
+- cross-references everywhere, code is indexed, you can tell this technology predates fancy IDEs and hyperlinked documents: it could be printed and lose nothing
+- incremental development did not significantly hinder the project; I did not run into any
+- despite the fearsome implications of 'web', no problems with spaghetti code were had; the design ended up well-structured enough to keep the code manageable
+
+Cons:
+- all code in one file requires different editing skills than many small files: good thing I had vim to help me
+- unfamiliar tool took some time getting used to
+- compiler errors were cryptic, until I found the -L flag
+- version control systems aren't made for cooperating on a single file: noweb supports using multiple .nw files, but I did not explore that
+- some code benefited more than other code: Chapter 3 is a good fit, but GLUT initialization in Chapter 2 was dull
+- I enjoy writing and am reasonably good at it; not all programmers are
+
+Overall, literate programming produces a professional-looking document that's a pleasure to read and provides great insight into how the code was designed and written.
+
+I think it has great pedagogic value. Describing a complex algorithm, or documenting a complex but stand-alone piece of code others will have to understand (parsers and interpreters come to mind) are tasks it is ideally suited to.
+
+The method of programming that results is also quite natural, and interesting to experience. I'll be keeping it in mind for the future.

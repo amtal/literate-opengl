@@ -1,0 +1,8 @@
+digraph dependencies {
+main->load->model
+main->vec
+model->vec
+main->render->model
+load->texture
+render->texture
+}
